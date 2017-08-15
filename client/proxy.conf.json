@@ -1,5 +1,5 @@
 {
-  "/api/test": {
+  "/organizacion/listar": {
     "target": "http://localhost:3000",
     "secure": false
   }

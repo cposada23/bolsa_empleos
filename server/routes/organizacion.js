@@ -15,7 +15,8 @@ module.exports = function(wagner) {
                     return res.status(status.INTERNAL_SERVER_ERROR).json({error: error.toString()});
                 }
 
-                res.json({ empresas: empresas});
+                //res.json({ empresas: empresas});
+                res.json(empresas);
             })
         };
     }));

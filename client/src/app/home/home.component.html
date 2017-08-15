@@ -1,3 +1,42 @@
-<p>
-  My first baby step !
-</p>
+<div class="container-fluid">
+  <div class="jumbotron">
+    <h1 class="display-3">Bolsa de Empleos</h1>
+    <p class="lead">Para el departamento de Ingenieria de Sistemas de la Universidad de Antioquia</p>
+  </div>
+</div>
+
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-8">
+      <p> A list listing all the organizations !</p>
+
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let empresa of empresas">
+          <h4 class="display-4">{{empresa.name}}</h4>
+          <small>id_ {{empresa._id}}</small>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <p> Some kind of banner on the right side !</p>
+    </div>
+
+    <div class="col-xs-12">
+      <div [hidden]="empresas || errMess">
+        <h4>Stand by</h4>
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+      <div *ngIf="errMess">
+        {{errMess}}
+      </div>
+    </div>
+
+  </div>
+
+</div>
