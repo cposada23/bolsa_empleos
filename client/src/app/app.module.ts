@@ -8,6 +8,7 @@ import {Restangular, RestangularModule} from 'ngx-restangular';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
 
 // servicios
 
@@ -21,10 +22,12 @@ import { baseURL } from './shared/baseurl';
 
 import { RestangularConfigFactory } from './shared/restConfig';
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
