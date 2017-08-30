@@ -1,8 +1,9 @@
-// librerias
+// librerias, modulos
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {Restangular, RestangularModule} from 'ngx-restangular';
+import { Restangular, RestangularModule} from 'ngx-restangular';
+import { AppRoutingModule} from "./app-routing/app-routing.module";
 
 // componentes
 
@@ -21,17 +22,20 @@ import { baseURL } from './shared/baseurl';
 // config files
 
 import { RestangularConfigFactory } from './shared/restConfig';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
-    RestangularModule.forRoot(RestangularConfigFactory)
+    RestangularModule.forRoot(RestangularConfigFactory),
+    AppRoutingModule
   ],
   providers: [
     EmpresaService,
