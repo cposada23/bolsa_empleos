@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Restangular, RestangularModule} from 'ngx-restangular';
 import { AppRoutingModule} from "./app-routing/app-routing.module";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // componentes
 
@@ -30,12 +31,14 @@ import { RegisterComponent } from './register/register.component';
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     RestangularModule.forRoot(RestangularConfigFactory),
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     EmpresaService,
