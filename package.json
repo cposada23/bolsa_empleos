@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "startProxy": "ng serve --proxy-config ./client/proxy.conf.json",
+    "startProxy": "ng serve --proxy-config ./client/proxy.conf.js",
     "startMongo": "mongod --dbpath /home/david/Software/mongoTestingDataBase/",
     "startServer": "nodemon ./server/server.js"
   },

@@ -26,4 +26,14 @@
       </form>
     </div>
   </div>
+
+  <div class="my-2 col-sm-12">
+    <div *ngIf="message">
+      <div class="alert alert-success" role="alert">You have successfully created an account</div>
+    </div>
+
+    <div *ngIf="errmess">
+      <div class="alert alert-warning" role="alert">Something went wrong ! plz try again</div>
+    </div>
+  </div>
 </div>

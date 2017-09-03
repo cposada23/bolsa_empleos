@@ -15,6 +15,7 @@ import { HeaderComponent } from './header/header.component';
 // servicios
 
 import { EmpresaService } from './services/organizacion/empresa.service';
+import { RegisterService} from './services/organizacion/register.service';
 
 // values
 
@@ -42,6 +43,7 @@ import { RegisterComponent } from './register/register.component';
   ],
   providers: [
     EmpresaService,
+    RegisterService,
     { provide: 'BaseURL', useValue: baseURL }
   ],
   bootstrap: [AppComponent]
