@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { Restangular, RestangularModule} from 'ngx-restangular';
 import { AppRoutingModule} from "./app-routing/app-routing.module";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 // componentes
 
@@ -25,6 +26,7 @@ import { baseURL } from './shared/baseurl';
 
 import { RestangularConfigFactory } from './shared/restConfig';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -33,13 +35,18 @@ import { RegisterComponent } from './register/register.component';
     HomeComponent,
     HeaderComponent,
     RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     RestangularModule.forRoot(RestangularConfigFactory),
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule.forRoot()
+  ],
+  entryComponents: [
+    LoginComponent
   ],
   providers: [
     EmpresaService,
