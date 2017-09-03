@@ -1,5 +1,7 @@
 let express = require('express');
 let status = require('http-status');
+
+// todo: use the built in body-parser module in express
 let bodyparser = require('body-parser');
 
 
@@ -63,11 +65,51 @@ module.exports = function(wagner) {
                                 .json({error: error.toString()});
                         }
 
-                        res.json({message: "Registro exitoso"});
+                        res.json({message: 'Registro exitoso'});
                     });
                 });
             });
         };
+    }));
+
+    api.post('/login', wagner.invoke(function (User) {
+
+        return function (req,res) {
+
+            let reqAccess = req.body;
+
+            process.nextTick(function () {
+
+                User.findOne({companyName: reqAccess.companyName}, function (err, user) {
+
+                    if(err){
+                        return res
+                            .status(status.INTERNAL_SERVER_ERROR)
+                            .json({error: error.toString()});
+                    }
+
+                    if(!user){
+                        return res.json({message: 'Incorrect username or password'});
+                    }
+
+                    if(user){
+
+                        if(!user.validPassword(reqAccess.password)){
+                            return res.json({message: 'Incorrect username or password'});
+                        }
+
+                        let token = user.generateJwt();
+                        let content = {
+                            user: user.companyName,
+                            role: user.role,
+                            token: token
+                        };
+
+                        res.json(content);
+                    }
+                });
+            });
+        }
     }));
 
     return api;
