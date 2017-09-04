@@ -69,7 +69,7 @@ module.exports = function(wagner) {
                     });
                 });
             });
-        };
+        }
     }));
 
     api.post('/login', wagner.invoke(function (User) {

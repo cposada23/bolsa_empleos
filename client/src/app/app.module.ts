@@ -16,7 +16,8 @@ import { HeaderComponent } from './header/header.component';
 // servicios
 
 import { EmpresaService } from './services/organizacion/empresa.service';
-import { RegisterService} from './services/organizacion/register.service';
+import { RegisterService } from './services/organizacion/register.service';
+import { LoginService } from './services/organizacion/login.service';
 
 // values
 
@@ -27,6 +28,7 @@ import { baseURL } from './shared/baseurl';
 import { RestangularConfigFactory } from './shared/restConfig';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+
 
 
 @NgModule({
@@ -51,6 +53,7 @@ import { LoginComponent } from './login/login.component';
   providers: [
     EmpresaService,
     RegisterService,
+    LoginService,
     { provide: 'BaseURL', useValue: baseURL }
   ],
   bootstrap: [AppComponent]
