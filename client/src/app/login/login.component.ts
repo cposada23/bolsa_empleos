@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
           if (response) {
             this.activeModal.close();
             // todo: set this for a private route
-            this.router.navigate(['/home']);
+            this.router.navigate(['/dashboard']);
           } else {
             this.errmess = 'Incorrect User or Password';
           }

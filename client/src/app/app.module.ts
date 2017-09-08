@@ -3,15 +3,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Restangular, RestangularModule} from 'ngx-restangular';
-import { AppRoutingModule} from "./app-routing/app-routing.module";
+import { AppRoutingModule} from './app-routing/app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // componentes
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
+import { CompanyDashboardComponent } from './company-dashboard/company-dashboard.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 // servicios
 
@@ -26,8 +29,7 @@ import { baseURL } from './shared/baseurl';
 // config files
 
 import { RestangularConfigFactory } from './shared/restConfig';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
+import { CompanyAuthGuard } from './guards/companyAuthGuard'
 
 
 
@@ -38,6 +40,7 @@ import { LoginComponent } from './login/login.component';
     HeaderComponent,
     RegisterComponent,
     LoginComponent,
+    CompanyDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ import { LoginComponent } from './login/login.component';
     EmpresaService,
     RegisterService,
     LoginService,
+    CompanyAuthGuard,
     { provide: 'BaseURL', useValue: baseURL }
   ],
   bootstrap: [AppComponent]
