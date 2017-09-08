@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import { Empresa } from '../models/organizacion/empresa';
-import { EmpresaService} from '../services/organizacion/empresa.service';
+import { Empresa } from '../../models/organizacion/empresa';
+import { EmpresaService} from '../../services/organizacion/empresa.service';
 
 @Component({
   selector: 'app-home',

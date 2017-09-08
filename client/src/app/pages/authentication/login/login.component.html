@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h4 class="modal-title titleFont">Log In</h4>
+  <button type="button" class="close" (click)="activeModal.dismiss('Cross click')">
+    <span>&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="loginForm">
+    <div class="form-group">
+      <input class="form-control" formControlName="companyName" placeholder="Username">
+    </div>
+
+    <div class="form-group">
+      <input class="form-control" formControlName="password" type="password" placeholder="password">
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <!-- <button type="button" class="btn btn-dark btn-block" (click)="activeModal.close('Close click')">Sign in</button> -->
+  <button type="button" class="btn btn-dark btn-block" (click)="onSubmit()">Sign in</button>
+</div>
