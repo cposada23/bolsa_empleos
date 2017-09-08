@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon ./server.js",
     "startServer": "nodemon ./server.js",
     "startMongo": "mongod --dbpath /home/david/Software/mongoTestingDataBase/"
   },

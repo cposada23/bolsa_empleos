@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { data } from './data';
-import { LoginService } from '../services/organizacion/login.service';
+import { LoginService } from '../../../services/organizacion/login.service';
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { data} from './data';
-import { ResponseMessage } from '../shared/ResponseMessage';
-import { RegisterService} from '../services/organizacion/register.service';
+import { ResponseMessage } from '../../../shared/ResponseMessage';
+import { RegisterService} from '../../../services/organizacion/register.service';
 
 @Component({
   selector: 'app-register',

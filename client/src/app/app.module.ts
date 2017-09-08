@@ -10,11 +10,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // componentes
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
-import { CompanyDashboardComponent } from './company-dashboard/company-dashboard.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './pages/home/home.component';
+import { HeaderComponent } from './components/header/header.component';
+import { CompanyDashboardComponent } from './pages/company-dashboard/company-dashboard.component';
+import { RegisterComponent } from './pages/authentication/register/register.component';
+import { LoginComponent } from './pages/authentication/login/login.component';
 
 // servicios
 
@@ -29,7 +29,7 @@ import { baseURL } from './shared/baseurl';
 // config files
 
 import { RestangularConfigFactory } from './shared/restConfig';
-import { CompanyAuthGuard } from './guards/companyAuthGuard'
+import { CompanyAuthGuard } from './app-routing/guards/companyAuthGuard'
 
 
 
