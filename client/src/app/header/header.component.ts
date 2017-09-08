@@ -9,13 +9,14 @@ import { LoginComponent } from '../login/login.component';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) { }
-
-  ngOnInit(){
+  constructor(private modalService: NgbModal) {
   }
 
-  open(){
-     const modalRef = this.modalService.open(LoginComponent);
+  ngOnInit() {
+  }
+
+  open() {
+    const modalRef = this.modalService.open(LoginComponent);
   }
 
 }

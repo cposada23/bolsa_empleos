@@ -48,6 +48,8 @@ module.exports = function(wagner) {
                     }
 
                     if(user){
+                        // todo: set a proper http status error
+
                         return res.status(status.CONFLICT).json({error: 'El usuario ya existe'});
                     }
 
@@ -82,6 +84,8 @@ module.exports = function(wagner) {
 
                 User.findOne({companyName: reqAccess.companyName}, function (err, user) {
 
+                    // todo: set an adequate response message, or none if possible
+
                     if(err){
                         return res
                             .status(status.INTERNAL_SERVER_ERROR)
@@ -89,13 +93,25 @@ module.exports = function(wagner) {
                     }
 
                     if(!user){
-                        return res.json({message: 'Incorrect username or password'});
+                        let content = {
+                            success: false,
+                            message: 'Incorrect username or password'
+                        };
+                        return res
+                            .status(status.UNAUTHORIZED)
+                            .json(content);
                     }
 
                     if(user){
 
                         if(!user.validPassword(reqAccess.password)){
-                            return res.json({message: 'Incorrect username or password'});
+                            let content = {
+                                success: false,
+                                message: 'Incorrect username or password'
+                            };
+                            return res
+                                .status(status.UNAUTHORIZED)
+                                .json(content);
                         }
 
                         let token = user.generateJwt();
