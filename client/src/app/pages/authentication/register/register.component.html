@@ -3,13 +3,16 @@
   <div class="card spacing">
     <div class="card-body">
 
-      <h2 class="card-title">Register</h2>
+      <h2 class="card-title">Create a new account</h2>
       <hr class="my-4">
 
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"  >
 
         <div class="row">
           <div class="col-sm-6 ">
+
+            <h4 class="main-margin-title mx-3">Account details</h4>
+
             <div class="form-group">
               <label for="name">Name of the Company</label>
               <input formControlName="companyName"  class="form-control" id="name">
@@ -20,9 +23,42 @@
               <input formControlName="password" class="form-control" id="password" type="password">
             </div>
 
+            <!-- todo: fill out all the input types with a form control fields -->
+
+            <h4 class="margin-title mx-3">Your company details</h4>
+
+            <div class="form-group">
+              <label for="description">A brief description of your company</label>
+              <textarea class="form-control" id="description"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="webpage">Your company's web page</label>
+              <input class="form-control form-control-sm" id="webpage">
+            </div>
+
             <button type="submit" class="btn btn-primary">Register</button>
           </div>
+
+          <div class="col-sm-6">
+
+            <h4 class="main-margin-title mx-3">Personal information</h4>
+
+            <div class="form-row user-name">
+              <div class="col">
+                <input class="form-control" placeholder="First name">
+              </div>
+
+              <div class="col">
+                <input class="form-control" placeholder="Last name">
+              </div>
+            </div>
+
+            <!-- todo: personal information details-->
+
+          </div>
         </div>
+
       </form>
     </div>
   </div>
