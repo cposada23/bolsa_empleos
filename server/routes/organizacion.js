@@ -5,6 +5,7 @@ let status = require('http-status');
 // let bodyparser = require('body-parser');
 
 
+
 module.exports = function(wagner) {
 
     let api = express.Router();
@@ -36,7 +37,15 @@ module.exports = function(wagner) {
         return function (req, res) {
 
             let reqUser = req.body;
-        
+            req.assert('companyName', 'You must enter the company Username').notEmpty();
+            req.assert('password', 'Password must be at least 4 characters long').len(4);
+
+            var errors = req.validationErrors();
+
+            if(errors) {
+                console.error('errors: ', errors);
+                return res.status(400).send(errors);
+            }
 
             process.nextTick(function () {
 
@@ -51,7 +60,7 @@ module.exports = function(wagner) {
                     if(user){
                         // todo: set a proper http status error
 
-                        return res.status(status.CONFLICT).json({error: 'El usuario ya existe'});
+                        return res.status(status.CONFLICT).json({error: 'The username already exist'});
                     }
 
                     let newCompany = new User();
@@ -68,7 +77,7 @@ module.exports = function(wagner) {
                                 .json({error: error.toString()});
                         }
 
-                        res.json({message: 'Registro exitoso'});
+                        res.json({message: 'Successful registration'});
                     });
                 });
             });
@@ -78,6 +87,16 @@ module.exports = function(wagner) {
     api.post('/login', wagner.invoke(function (User) {
 
         return function (req,res) {
+            req.assert('companyName', 'You must enter the company Username').notEmpty();
+            req.assert('password', 'Password must be at least 4 characters long').len(4);
+
+            var errors = req.validationErrors();
+
+            if(errors) {
+                console.error('errors: ', errors);
+                return res.status(400).send(errors);
+            }
+
 
             let reqAccess = req.body;
 
