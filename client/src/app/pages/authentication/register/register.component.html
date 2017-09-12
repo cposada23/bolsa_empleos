@@ -13,6 +13,8 @@
 
             <h4 class="main-margin-title mx-3">Account details</h4>
 
+            <!-- todo:  change name for email -->
+
             <div class="form-group">
               <label for="name">Name of the Company</label>
               <input formControlName="companyName"  class="form-control" id="name">
@@ -23,12 +25,12 @@
               <input formControlName="password" class="form-control" id="password" type="password">
             </div>
 
-            <!-- todo: fill out all the input types with a form control fields -->
+            <!-- todo: fill out all the input types with a form control field -->
 
             <h4 class="margin-title mx-3">Your company details</h4>
 
             <div class="form-group">
-              <label for="description">A brief description of your company</label>
+              <label for="description">Tell us a little bit about your company</label>
               <textarea class="form-control" id="description"></textarea>
             </div>
 
@@ -37,27 +39,72 @@
               <input class="form-control form-control-sm" id="webpage">
             </div>
 
-            <button type="submit" class="btn btn-primary">Register</button>
           </div>
 
-          <div class="col-sm-6">
+          <div class="col-sm-5 ml-sm-auto">
 
             <h4 class="main-margin-title mx-3">Personal information</h4>
 
-            <div class="form-row user-name">
-              <div class="col">
-                <input class="form-control" placeholder="First name">
-              </div>
+            <div class="form-group">
+              <div class="form-row user-name">
+                <div class="col">
+                  <input class="form-control" placeholder="First name">
+                </div>
 
-              <div class="col">
-                <input class="form-control" placeholder="Last name">
+                <div class="col">
+                  <input class="form-control" placeholder="Last name">
+                </div>
               </div>
             </div>
 
-            <!-- todo: personal information details-->
+            <div class="form-group">
+              <label for="cellphone">Gives us a number to call you</label>
+              <input type="tel"  class="form-control form-control-sm" id="cellphone" placeholder="+24 3003102703">
+            </div>
+
+            <div class="form-group">
+              <label for="charge">What's your current role ?</label>
+              <input class="form-control form-control-sm" id="charge" placeholder="i.e. Scrum master">
+            </div>
 
           </div>
         </div>
+
+        <hr class="my-4">
+        <h4 class="large-margin-title mx-3">Additional information</h4>
+
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-8">
+
+            <div class=" form-group row">
+              <label for="nit" class="col-sm-3 col-form-label">NIT</label>
+              <div class="col-sm-3">
+                <input class="form-control" id="nit">
+              </div>
+            </div>
+
+            <!-- todo: set a google places API for this field -->
+
+            <div class=" form-group row">
+              <label for="city" class="col-sm-3 col-form-label">City</label>
+              <div class="col-sm-6">
+                <input class="form-control" id="city" placeholder="i.e. Medellin, Antioquia">
+              </div>
+            </div>
+
+            <div class=" form-group row">
+              <label for="technology" class="col-sm-3 col-form-label">Employment sector</label>
+              <div class="col-sm-6">
+                <input class="form-control" id="technology" placeholder="i.e. Software development">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary float-right submit-button btn-success">Sign Up</button>
 
       </form>
     </div>
