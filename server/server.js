@@ -1,11 +1,14 @@
 let express = require('express');
-let wagner = require('wagner-core');
+// let wagner = require('wagner-core');
 
-require('./models/models')(wagner);
+
 
 let app = express();
+require('./config/config')(app);
+require('./endpoints/routes')(app);
 
-app.use('/organizacion', require('./routes/organizacion')(wagner));
+// app.use('/organizacion', require('./routes/organizacion')(wagner));
 
-app.listen(3000);
-console.log('Escuchando en el puerto 3000: http://localhost:3000/');
+app.listen(app.get('port'), () => {
+    console.log(`Servidor express escuchado en el puerto ${app.get('port')}`);
+});

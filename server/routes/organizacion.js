@@ -2,13 +2,13 @@ let express = require('express');
 let status = require('http-status');
 
 // todo: use the built in body-parser module in express
-let bodyparser = require('body-parser');
+// let bodyparser = require('body-parser');
 
 
 module.exports = function(wagner) {
 
     let api = express.Router();
-    api.use(bodyparser.json());
+    // api.use(bodyparser.json());
 
     // liste todas las empresas registradas: http://localhost:3000/organizacion/listar
     // Request headers:  name: Content-Type  value: application/json
@@ -36,6 +36,7 @@ module.exports = function(wagner) {
         return function (req, res) {
 
             let reqUser = req.body;
+        
 
             process.nextTick(function () {
 
