@@ -26,3 +26,13 @@
 .submit-button {
   margin-top: 1em;
 }
+
+.error {
+  color: #e53935;
+  margin-left: 0.5em;
+  font-weight: bold;
+}
+
+.invalid-form-control {
+  border-color: #e53935;
+}
