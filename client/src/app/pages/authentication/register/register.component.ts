@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { data} from './data';
 import { ResponseMessage } from '../../../shared/ResponseMessage';
 import { RegisterService} from '../../../services/organizacion/register.service';
+import { AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -101,8 +102,6 @@ export class RegisterComponent implements OnInit {
       .subscribe( data => this.onValueChanged(data));
 
       this.onValueChanged();    // reset form validation messages.
-
-    // todo: set a message for non touched and non modified values
   }
 
   onSubmit() {
@@ -150,5 +149,10 @@ export class RegisterComponent implements OnInit {
         }
       }
     }
+  }
+
+  validateEmptyFields(field: AbstractControl, errorField: string): Boolean {
+
+    return (field.value === '' && field.touched || this.formErrors[errorField]);
   }
 }

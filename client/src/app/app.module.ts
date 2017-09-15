@@ -2,7 +2,7 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Restangular, RestangularModule} from 'ngx-restangular';
+import { RestangularModule} from 'ngx-restangular';
 import { AppRoutingModule} from './app-routing/app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -29,7 +29,7 @@ import { baseURL } from './shared/baseurl';
 // config files
 
 import { RestangularConfigFactory } from './shared/restConfig';
-import { CompanyAuthGuard } from './app-routing/guards/companyAuthGuard'
+import { CompanyAuthGuard } from './app-routing/guards/companyAuthGuard';
 
 
 

@@ -17,7 +17,8 @@
 
             <div class="form-group">
               <label for="name" class="float-left" >Name of the Company</label>
-              <input formControlName="companyName"  class="form-control" [ngClass]="{'invalid-form-control': formErrors.companyName}"
+              <input formControlName="companyName"  class="form-control"
+                     [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('companyName'), 'companyName')}"
                      id="name">
 
               <span [hidden]="!formErrors.companyName" class="float-right">
@@ -27,7 +28,8 @@
 
             <div class="form-group">
               <label for="password">Password</label>
-              <input formControlName="password" class="form-control" [ngClass]="{'invalid-form-control': formErrors.password}"
+              <input formControlName="password" class="form-control"
+                     [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('password'), 'password')}"
                      id="password" type="password">
 
               <span [hidden]="!formErrors.password" class="float-right">
@@ -41,7 +43,8 @@
 
             <div class="form-group">
               <label for="description">Tell us a little bit about your company</label>
-              <textarea formControlName="companyDetails" class="form-control" [ngClass]="{'invalid-form-control': formErrors.companyDetails}"
+              <textarea formControlName="companyDetails" class="form-control"
+                        [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('companyDetails'), 'companyDetails')}"
                         id="description"></textarea>
 
               <span [hidden]="!formErrors.companyDetails" class="float-right">
@@ -51,7 +54,8 @@
 
             <div class="form-group">
               <label for="webpage">Your company's web page</label>
-              <input formControlName="website" class="form-control form-control-sm" [ngClass]="{'invalid-form-control': formErrors.website}"
+              <input formControlName="website" class="form-control form-control-sm"
+                     [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('website'), 'website')}"
                      id="webpage">
 
               <span [hidden]="!formErrors.website" class="float-right">
@@ -68,11 +72,13 @@
             <div class="form-group">
               <div class="form-row user-name">
                 <div class="col">
-                  <input formControlName="name" class="form-control" placeholder="First name" [ngClass]="{'invalid-form-control': formErrors.name}">
+                  <input formControlName="name" class="form-control" placeholder="First name"
+                         [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('name'), 'name')}">
                 </div>
 
                 <div class="col">
-                  <input formControlName="lastName" class="form-control" placeholder="Last name" [ngClass]="{'invalid-form-control': formErrors.lastName}">
+                  <input formControlName="lastName" class="form-control" placeholder="Last name"
+                         [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('lastName'), 'lastName')}">
                 </div>
               </div>
 
@@ -93,7 +99,7 @@
             <div class="form-group">
               <label for="cellphone">Gives us a number to call you</label>
               <input  formControlName="contact" class="form-control form-control-sm" id="cellphone" placeholder="+24 3003102703" type="tel"
-                      [ngClass]="{'invalid-form-control': formErrors.contact}">
+                      [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('contact'), 'contact')}">
 
               <span [hidden]="!formErrors.contact" class="float-right">
                 <small class="error">{{formErrors.contact}}</small>
@@ -118,7 +124,8 @@
             <div class=" form-group row">
               <label for="nit" class="col-sm-3 col-form-label">NIT</label>
               <div class="col-sm-3">
-                <input formControlName="nit" class="form-control" id="nit" [ngClass]="{'invalid-form-control': formErrors.nit}">
+                <input formControlName="nit" class="form-control" id="nit"
+                       [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('nit'), 'nit')}">
               </div>
 
               <span [hidden]="!formErrors.nit" class="float-right">
@@ -131,7 +138,8 @@
             <div class=" form-group row">
               <label for="city" class="col-sm-3 col-form-label">City</label>
               <div class="col-sm-6">
-                <input formControlName="city" class="form-control" id="city" placeholder="i.e. Medellin, Antioquia" [ngClass]="{'invalid-form-control': formErrors.city}">
+                <input formControlName="city" class="form-control" id="city" placeholder="i.e. Medellin, Antioquia"
+                       [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('city'), 'city')}">
               </div>
 
               <span [hidden]="!formErrors.city" class="float-right">
@@ -142,7 +150,8 @@
             <div class=" form-group row">
               <label for="technology" class="col-sm-3 col-form-label">Employment sector</label>
               <div class="col-sm-6">
-                <input formControlName="employmentSector" class="form-control" id="technology" placeholder="i.e. Software development" [ngClass]="{'invalid-form-control': formErrors.employmentSector}">
+                <input formControlName="employmentSector" class="form-control" id="technology" placeholder="i.e. Software development"
+                       [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('employmentSector'), 'employmentSector')}">
               </div>
 
               <span [hidden]="!formErrors.employmentSector" class="float-right">
