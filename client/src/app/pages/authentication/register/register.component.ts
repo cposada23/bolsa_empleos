@@ -72,6 +72,15 @@ export class RegisterComponent implements OnInit {
     }
   };
 
+  public componentData: any = '';
+
+  public userSettings: any = {
+    showSearchButton: false,
+    showCurrentLocation: false,
+    locationIconUrl: 'http://www.myiconfinder.com/uploads/iconsets/369f997cef4f440c5394ed2ae6f8eecd.png',
+    geoTypes: ['cities']
+  };
+
   constructor(private formBuilder: FormBuilder,
               private registerService: RegisterService) {
     this.createForm();
@@ -154,5 +163,11 @@ export class RegisterComponent implements OnInit {
   validateEmptyFields(field: AbstractControl, errorField: string): Boolean {
 
     return (field.value === '' && field.touched || this.formErrors[errorField]);
+  }
+
+  // todo: save this value into the data class
+
+  autoCompleteCallback(data: any): any {
+    this.componentData = data;
   }
 }

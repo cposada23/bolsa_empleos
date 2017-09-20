@@ -15,6 +15,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CompanyDashboardComponent } from './pages/company-dashboard/company-dashboard.component';
 import { RegisterComponent } from './pages/authentication/register/register.component';
 import { LoginComponent } from './pages/authentication/login/login.component';
+import { Ng4GeoautocompleteModule } from 'ng4-geoautocomplete';
 
 // servicios
 
@@ -48,7 +49,8 @@ import { CompanyAuthGuard } from './app-routing/guards/companyAuthGuard';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    Ng4GeoautocompleteModule.forRoot()
   ],
   entryComponents: [
     LoginComponent

@@ -133,13 +133,16 @@
               </span>
             </div>
 
-            <!-- todo: set a google places API for this field -->
-
             <div class=" form-group row">
-              <label for="city" class="col-sm-3 col-form-label">City</label>
+              <label class="col-sm-3 col-form-label">City</label>
               <div class="col-sm-6">
+                <!--
                 <input formControlName="city" class="form-control" id="city" placeholder="i.e. Medellin, Antioquia"
                        [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('city'), 'city')}">
+                       -->
+                <!-- todo: include a validation message and change its style to match the look and feel of this form -->
+
+                <ng4geo-autocomplete [userSettings]="userSettings" (componentCallback)="autoCompleteCallback($event)"></ng4geo-autocomplete>
               </div>
 
               <span [hidden]="!formErrors.city" class="float-right">
@@ -180,3 +183,7 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript"
+        src="https://maps.google.com/maps/api/js?sensor=true&key=AIzaSyBQQYSUeGX2Uu4fv0KE2tlI3nBOON9lSTA&libraries=places&language=en-US"></script>
+
