@@ -97,7 +97,7 @@
             </div>
 
             <div class="form-group">
-              <label for="cellphone">Gives us a number to call you</label>
+              <label for="cellphone">Contact Information</label>
               <input  formControlName="contact" class="form-control form-control-sm" id="cellphone" placeholder="+24 3003102703" type="tel"
                       [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('contact'), 'contact')}">
 
@@ -107,8 +107,21 @@
             </div>
 
             <div class="form-group">
-              <label for="charge">What's your current role ?</label>
-              <input formControlName="workingRole" class="form-control form-control-sm" id="charge" placeholder="i.e. Scrum master (optional)">
+              <label>What's your current role ?</label>
+
+              <!-- todo: iterate over an array defined in the typescript file -->
+
+              <div ngbDropdown class="d-inline-block role-box">
+                <button class="btn" ngbDropdownToggle type="button">{{selectedRole}}</button>
+                <div ngbDropdownMenu>
+                  <button class="dropdown-item" type="button" (click)="updateCurrentRole('Director')">Director</button>
+                  <button class="dropdown-item" type="button" (click)="updateCurrentRole('Manager')">Manager</button>
+                  <button class="dropdown-item" type="button" (click)="updateCurrentRole('Analyst')">Analyst</button>
+                  <button class="dropdown-item" type="button" (click)="updateCurrentRole('Human Resources Analyst')">Human Resources Analyst</button>
+                  <button class="dropdown-item" type="button" (click)="updateCurrentRole('psychologist')">psychologist</button>
+                  <button class="dropdown-item" type="button" (click)="updateCurrentRole('Other')">Other</button>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -118,7 +131,7 @@
         <h4 class="large-margin-title mx-3">Additional information</h4>
 
         <div class="row">
-          <div class="col-sm-2"></div>
+          <div class="col-sm-1"></div>
           <div class="col-sm-8">
 
             <div class=" form-group row">
@@ -136,18 +149,13 @@
             <div class=" form-group row">
               <label class="col-sm-3 col-form-label">City</label>
               <div class="col-sm-6">
-                <!--
-                <input formControlName="city" class="form-control" id="city" placeholder="i.e. Medellin, Antioquia"
-                       [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('city'), 'city')}">
-                       -->
+
                 <!-- todo: include a validation message and change its style to match the look and feel of this form -->
 
                 <ng4geo-autocomplete [userSettings]="userSettings" (componentCallback)="autoCompleteCallback($event)"></ng4geo-autocomplete>
               </div>
 
-              <span [hidden]="!formErrors.city" class="float-right">
-                <small class="error">{{formErrors.city}}</small>
-              </span>
+              <!-- todo: set an error message in case this field has been touched -->
             </div>
 
             <div class=" form-group row">

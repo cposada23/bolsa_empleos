@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
   message: ResponseMessage;
   errmess: string;
   regex  = '^[a-zA-Z0-9]*$';
+  selectedRole = 'Role';
 
   formErrors = {
     companyName: '',
@@ -26,9 +27,7 @@ export class RegisterComponent implements OnInit {
     name: '',
     lastName: '',
     contact: '',
-    workingRole: '',
     nit: '',
-    city: '',
     employmentSector: '',
   };
 
@@ -64,9 +63,6 @@ export class RegisterComponent implements OnInit {
     nit: {
       required: 'This field is required'
     },
-    city: {
-      required: 'This field is required'
-    },
     employmentSector: {
       required: 'This field is required'
     }
@@ -78,7 +74,7 @@ export class RegisterComponent implements OnInit {
     showSearchButton: false,
     showCurrentLocation: false,
     locationIconUrl: 'http://www.myiconfinder.com/uploads/iconsets/369f997cef4f440c5394ed2ae6f8eecd.png',
-    geoTypes: ['cities']
+    geoTypes: ['(cities)']
   };
 
   constructor(private formBuilder: FormBuilder,
@@ -169,5 +165,9 @@ export class RegisterComponent implements OnInit {
 
   autoCompleteCallback(data: any): any {
     this.componentData = data;
+  }
+
+  updateCurrentRole(role: string) {
+    this.selectedRole = role;
   }
 }
