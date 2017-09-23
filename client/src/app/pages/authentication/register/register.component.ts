@@ -98,7 +98,6 @@ export class RegisterComponent implements OnInit {
       contact: ['', Validators.required],
       workingRole: '',
       nit: ['', Validators.required],
-      city: ['', Validators.required],
       employmentSector: ['', Validators.required],
       role: 'company'
     });
