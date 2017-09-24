@@ -1,0 +1,7 @@
+// todo: set "dynamically" a different background in the login component
+/deep/ .modal-backdrop.show {
+  opacity: 0.4;
+  background: #e0e0e0;
+}
+
+
