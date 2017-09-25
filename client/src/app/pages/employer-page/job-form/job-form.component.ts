@@ -8,6 +8,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class JobFormComponent implements OnInit {
 
+  model;
+
   constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
