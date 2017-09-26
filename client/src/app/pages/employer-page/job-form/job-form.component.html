@@ -14,7 +14,7 @@
 
   <div class="modal-body">
 
-    <div class="form-group row left-padding">
+    <div class="form-group row left-border">
         <div class="col-sm-3">
           <label for="name" class="float-left">Name</label>
         </div>
@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    <div class="form-group row left-padding">
+    <div class="form-group row left-border">
         <div class="col-sm-3">
           <label for="description">Description</label>
         </div>
@@ -36,7 +36,7 @@
 
     <!-- todo: set a list to iterate for every dropdown in the typescript file -->
 
-    <div class="form-group row left-padding">
+    <div class="form-group row left-border field-set">
 
         <div class="col-sm-3">
           <label for="requirements">Requirements</label>
@@ -49,7 +49,7 @@
 
             <div class="col-sm-3">
               <div class="btn-group" ngbDropdown>
-                <button type="button" class="btn btn-outline-success">Candidate Type</button>
+                <button type="button" class="btn btn-outline-success fixed-big-button-width">Candidate Type</button>
                 <button class="btn btn-outline-success" ngbDropdownToggle></button>
                 <div class="dropdown-menu" ngbDropdownMenu>
                   <button class="dropdown-item" type="button">Student</button>
@@ -60,7 +60,7 @@
 
             <div class="col-sm-5">
               <div class="btn-group" ngbDropdown>
-                <button type="button" class="btn btn-outline-success">Languages</button>
+                <button type="button" class="btn btn-outline-success fixed-big-button-width">Languages</button>
                 <button class="btn btn-outline-success" ngbDropdownToggle></button>
                 <div class="dropdown-menu" ngbDropdownMenu>
                   <button class="dropdown-item" type="button">English</button>
@@ -77,7 +77,7 @@
 
     </div>
 
-    <div class="form-group row left-padding">
+    <div class="form-group row left-border">
       <div class="col-sm-3">
         <label for="date">Set an expiracy Date</label>
       </div>
@@ -99,9 +99,63 @@
       </div>
     </div>
 
-    <div class="form-group row left-padding"></div>
+    <div class="form-group row left-border field-set">
+      <div class="col-sm-3">
+        <label for="info">Additional Information</label>
+      </div>
+
+      <div class="col-sm-9" id="info">
+        <div class="row">
+
+          <div class="col-sm-3">
+            <input class="form-control" placeholder="$ 0.0">
+          </div>
+
+          <div class="col-sm-3">
+            <div class="btn-group" ngbDropdown>
+              <button type="button" class="btn btn-outline-dark fixed-big-button-width">Job Type</button>
+              <button class="btn btn-outline-dark" ngbDropdownToggle></button>
+              <div class="dropdown-menu" ngbDropdownMenu>
+                <button class="dropdown-item" type="button">Full time</button>
+                <button class="dropdown-item" type="button">Part time</button>
+                <button class="dropdown-item" type="button">Contract</button>
+                <button class="dropdown-item" type="button">Temporary</button>
+                <button class="dropdown-item" type="button">Apprentice</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="btn-group" ngbDropdown>
+              <button type="button" class="btn btn-outline-dark fixed-big-button-width">Technical Role</button>
+              <button class="btn btn-outline-dark" ngbDropdownToggle></button>
+              <div class="dropdown-menu" ngbDropdownMenu>
+                <button class="dropdown-item" type="button">Analyst</button>
+                <button class="dropdown-item" type="button">Developer</button>
+                <button class="dropdown-item" type="button">Tester</button>
+                <button class="dropdown-item" type="button">Management</button>
+                <button class="dropdown-item" type="button">Architect</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="form-group row left-border">
+      <div class="col-sm-3">
+        <label for="urgency" class="float-left">Urgency</label>
+      </div>
+
+      <!-- todo: set this field name and content dynamically -->
+      <div class="col-sm-3">
+        <button id="urgency" class="btn btn-outline-dark">High</button>
+      </div>
+    </div>
 
   </div>
+
   <div class="modal-footer">
     <div class="ml-auto">
       <button type="button" class="btn btn-outline-dark">Cancel</button>
