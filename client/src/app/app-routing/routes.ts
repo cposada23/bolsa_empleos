@@ -1,16 +1,16 @@
 import { Routes} from '@angular/router';
 
-import { HomeComponent } from '../pages/home/home.component';
+import { HomeComponent} from '../pages/home/home.component';
 import { RegisterComponent} from '../pages/authentication/register/register.component';
-import { LoginComponent} from '../pages/authentication/login/login.component';
-import { CompanyDashboardComponent} from '../pages/company-dashboard/company-dashboard.component';
+import { CompanyDashboardComponent} from '../pages/employer-page/company-dashboard/company-dashboard.component';
 import { CompanyAuthGuard} from './guards/companyAuthGuard';
+import { DashboardTableComponent } from '../pages/employer-page/dashboard-table/dashboard-table.component';
 
 export const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent},
-  // todo: set a new subrouter outlet ?
-  {path: 'dashboard', component: CompanyDashboardComponent, canActivate: [CompanyAuthGuard]},
+  {path: 'dashboard', component: CompanyDashboardComponent, canActivate: [CompanyAuthGuard], children: [
+    {path: '', component: DashboardTableComponent },
+  ]},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];

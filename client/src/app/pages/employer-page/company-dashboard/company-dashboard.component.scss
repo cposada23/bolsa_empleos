@@ -1,0 +1,42 @@
+@media (min-width: 1200px) {
+  .container{
+    max-width: 87em;
+  }
+}
+
+.sidebar {
+  margin-top: 4em;
+}
+
+.nav-header {
+  margin-top: 1em;
+  margin-bottom: 0;
+}
+
+.icon {
+  padding-left: 0.7em;
+}
+
+/deep/ .card {
+  background: #fff;
+  border-radius: 2px;
+  margin: 1rem;
+
+  .toolbar {
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+  }
+
+  .inline-icon {
+    padding-top: 0.2em;
+    padding-right: 0.3em;
+  }
+
+  .offers-table {
+    margin-top: 1em;
+  }
+}
+
+/deep/ .dashboard {
+  box-shadow: 0 1px 10px rgba(0,0,0,0.19);
+}

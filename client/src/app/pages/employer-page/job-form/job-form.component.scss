@@ -1,0 +1,26 @@
+// todo: set "dynamically" a different background in the login component
+/deep/ .modal-backdrop.show {
+  opacity: 0.4;
+  background: #e0e0e0;
+}
+
+.left-border {
+  padding-left: 3em;
+  padding-top: 0.3em;
+}
+
+.fixed-small-button-width {
+  width: 6em !important;
+}
+
+.fixed-big-button-width {
+  width: 9em !important;
+}
+
+.field-set {
+  padding-top: 4em;
+}
+
+.row-separator {
+  padding-top: 0.5em;
+}

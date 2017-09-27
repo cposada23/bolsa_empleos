@@ -12,9 +12,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
-import { CompanyDashboardComponent } from './pages/company-dashboard/company-dashboard.component';
+import { CompanyDashboardComponent } from './pages/employer-page/company-dashboard/company-dashboard.component';
 import { RegisterComponent } from './pages/authentication/register/register.component';
 import { LoginComponent } from './pages/authentication/login/login.component';
+import { JobFormComponent } from './pages/employer-page/job-form/job-form.component';
+import { DashboardTableComponent } from './pages/employer-page/dashboard-table/dashboard-table.component';
 
 // servicios
 
@@ -29,8 +31,7 @@ import { baseURL } from './shared/baseurl';
 // config files
 
 import { RestangularConfigFactory } from './shared/restConfig';
-import { CompanyAuthGuard } from './app-routing/guards/companyAuthGuard'
-
+import { CompanyAuthGuard } from './app-routing/guards/companyAuthGuard';
 
 
 @NgModule({
@@ -40,7 +41,9 @@ import { CompanyAuthGuard } from './app-routing/guards/companyAuthGuard'
     HeaderComponent,
     RegisterComponent,
     LoginComponent,
-    CompanyDashboardComponent
+    CompanyDashboardComponent,
+    JobFormComponent,
+    DashboardTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import { CompanyAuthGuard } from './app-routing/guards/companyAuthGuard'
     NgbModule.forRoot()
   ],
   entryComponents: [
-    LoginComponent
+    LoginComponent,
+    JobFormComponent
   ],
   providers: [
     EmpresaService,
