@@ -8,10 +8,12 @@ module.exports = function(wagner) {
 
     let Empresa = mongoose.model('Empresa', require('./organizacion/empresa'), 'empresas' );
     let User = mongoose.model('User', require('./organizacion/user'), 'users');
+    let Job = mongoose.model('Job', require('./organizacion/job'), 'jobs');
 
     let models = {
         Empresa: Empresa,
-        User: User
+        User: User,
+        Job: Job
     };
 
     _.each(models, function (value, key) {

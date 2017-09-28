@@ -1,9 +1,8 @@
 let express = require('express');
 let status = require('http-status');
+let auth =  require('../middleware/auth');
 
 // todo: use the built in body-parser module in express
-// let bodyparser = require('body-parser');
-
 
 
 module.exports = function(wagner) {
@@ -40,7 +39,7 @@ module.exports = function(wagner) {
             req.assert('companyName', 'You must enter the company Username').notEmpty();
             req.assert('password', 'Password must be at least 4 characters long').len(4);
 
-            var errors = req.validationErrors();
+            let errors = req.validationErrors();
 
             if(errors) {
                 console.error('errors: ', errors);
@@ -90,7 +89,7 @@ module.exports = function(wagner) {
             req.assert('companyName', 'You must enter the company Username').notEmpty();
             req.assert('password', 'Password must be at least 4 characters long').len(4);
 
-            var errors = req.validationErrors();
+            let errors = req.validationErrors();
 
             if(errors) {
                 console.error('errors: ', errors);
@@ -145,6 +144,16 @@ module.exports = function(wagner) {
                     }
                 });
             });
+        }
+    }));
+
+    // Registre la oferta: http://localhost:3000/organizacion/nuevo
+    // Request headers:  name: Content-Type  value: application/json
+    api.post('/nuevo', auth.verifyToken, wagner.invoke(function (User) {
+
+        return function (req, res) {
+
+            res.json({message: 'success'});
         }
     }));
 
