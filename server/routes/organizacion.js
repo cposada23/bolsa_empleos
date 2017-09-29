@@ -2,13 +2,9 @@ let express = require('express');
 let status = require('http-status');
 let auth =  require('../middleware/auth');
 
-// todo: use the built in body-parser module in express
-
-
 module.exports = function(wagner) {
 
     let api = express.Router();
-    // api.use(bodyparser.json());
 
     // liste todas las empresas registradas: http://localhost:3000/organizacion/listar
     // Request headers:  name: Content-Type  value: application/json
@@ -43,7 +39,7 @@ module.exports = function(wagner) {
 
             if(errors) {
                 console.error('errors: ', errors);
-                return res.status(400).send(errors);
+                return res.status(status.BAD_REQUEST).send(errors);
             }
 
             process.nextTick(function () {
@@ -53,22 +49,17 @@ module.exports = function(wagner) {
                     if(err){
                         return res
                             .status(status.INTERNAL_SERVER_ERROR)
-                            .json({error: error.toString()});
+                            .json({error: err.toString()});
                     }
 
                     if(user){
-                        // todo: set a proper http status error
 
-                        return res.status(status.CONFLICT).json({error: 'The username already exist'});
+                        return res
+                            .status(status.CONFLICT)
+                            .json({error: 'The username already exist'});
                     }
 
-                    let newCompany = new User();
-
-                    newCompany.companyName = reqUser.companyName;
-                    newCompany.role = reqUser.role;
-                    newCompany.setPassword(reqUser.password);
-
-                    newCompany.save( function (error) {
+                    User(reqUser).save( function (error) {
 
                         if(error){
                             return res
@@ -83,6 +74,8 @@ module.exports = function(wagner) {
         }
     }));
 
+    // autentique al usuario: http://localhost:3000/organizacion/login
+    // Request headers:  name: Content-Type  value: application/json
     api.post('/login', wagner.invoke(function (User) {
 
         return function (req,res) {
@@ -93,9 +86,8 @@ module.exports = function(wagner) {
 
             if(errors) {
                 console.error('errors: ', errors);
-                return res.status(400).send(errors);
+                return res.status(status.BAD_REQUEST).send(errors);
             }
-
 
             let reqAccess = req.body;
 
@@ -103,8 +95,7 @@ module.exports = function(wagner) {
 
                 User.findOne({companyName: reqAccess.companyName}, function (err, user) {
 
-                    // todo: set an adequate response message, or none if possible
-
+                    // todo: unset the success field.
                     if(err){
                         return res
                             .status(status.INTERNAL_SERVER_ERROR)
@@ -149,11 +140,41 @@ module.exports = function(wagner) {
 
     // Registre la oferta: http://localhost:3000/organizacion/nuevo
     // Request headers:  name: Content-Type  value: application/json
-    api.post('/nuevo', auth.verifyToken, wagner.invoke(function (User) {
+    api.post('/nuevo', auth.verifyToken, wagner.invoke(function (Job) {
 
         return function (req, res) {
 
-            res.json({message: 'success'});
+            // todo: field validation (by asserts or using the built-in mongoose validators)
+
+            let reqJob = req.body.content;
+
+            process.nextTick(function () {
+
+                Job.findOne({jobName: reqJob.jobName}, function (err, job) {
+
+                    if(err){
+                        return res
+                            .status(status.INTERNAL_SERVER_ERROR)
+                            .json({error: err.toString()});
+                    }
+
+                    if(job){
+                        return res
+                            .status(status.CONFLICT)
+                            .json({error: err.toString()});
+                    }
+
+                    Job(reqJob).save(function (error) {
+                        if(error){
+                            return res
+                                .status(status.INTERNAL_SERVER_ERROR)
+                                .json({error: error.toString()});
+                        }
+
+                        res.json({message: 'Job has been successfully registered'});
+                    });
+                })
+            })
         }
     }));
 

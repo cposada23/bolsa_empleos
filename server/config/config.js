@@ -8,6 +8,7 @@ let   expressValidator      = require('express-validator');
 
 module.exports = function (app) {
 
+    // todo: use the built in body-parser module in express
 
     app.set('port', process.env.PORT || 3000);
 

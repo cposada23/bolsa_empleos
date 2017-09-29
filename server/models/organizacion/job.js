@@ -3,10 +3,11 @@ let Schema = mongoose.Schema;
 
 let jobSchema = {
 
-    // todo: make indexation to the id of this schema
-    name: {
+    // todo: make an indexation to the id of this schema
+    jobName: {
         type: String,
         required: true,
+        unique: true
     },
     description: {
         type: String,
@@ -20,8 +21,9 @@ let jobSchema = {
         type: String,
         required: true
     },
+    // todo: set this variable to a date type
     expiryDate: {
-        type: Date,
+        type: String,
         required: true
     },
     salary: {
