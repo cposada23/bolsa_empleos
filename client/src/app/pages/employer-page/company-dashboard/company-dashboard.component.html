@@ -1,6 +1,3 @@
-
-<!-- todo: expand the container width -->
-
 <div class="container">
 
   <!-- watch out -->
@@ -43,7 +40,9 @@
         <!-- todo: increase the size of the user icon -->
 
         <div class="navbar-nav">
-          <a><i class="fa fa-user-circle-o icon fa-lg"></i> </a>
+          <a id="accountPopover" [ngbPopover]="popContent" popoverTitle="username" placement="bottom">
+            <i class="fa fa-user-circle-o icon fa-lg"></i>
+          </a>
         </div>
 
       </nav>
@@ -63,4 +62,10 @@
 
   </div>
 </div>
+
+<ng-template #popContent>
+  <ul class="list-group">
+    Settings
+  </ul>
+</ng-template>
 

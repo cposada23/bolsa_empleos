@@ -15,6 +15,15 @@
 
 .icon {
   padding-left: 0.7em;
+  font-size: 1.6em;
+}
+
+#accountPopover {
+  cursor: pointer;
+}
+
+/deep/ .popover {
+  width: 150px;
 }
 
 /deep/ .card {
