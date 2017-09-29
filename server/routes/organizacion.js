@@ -67,7 +67,8 @@ module.exports = function(wagner) {
                                 .json({error: error.toString()});
                         }
 
-                        res.json({message: 'Successful registration'});
+                        let content = { message: 'Successful registration' };
+                        res.json(content);
                     });
                 });
             });
@@ -103,10 +104,7 @@ module.exports = function(wagner) {
                     }
 
                     if(!user){
-                        let content = {
-                            success: false,
-                            message: 'Incorrect username or password'
-                        };
+                        let content = { message: 'Incorrect username or password' };
                         return res
                             .status(status.UNAUTHORIZED)
                             .json(content);
@@ -115,10 +113,7 @@ module.exports = function(wagner) {
                     if(user){
 
                         if(!user.validPassword(reqAccess.password)){
-                            let content = {
-                                success: false,
-                                message: 'Incorrect username or password'
-                            };
+                            let content = { message: 'Incorrect username or password' };
                             return res
                                 .status(status.UNAUTHORIZED)
                                 .json(content);
@@ -171,7 +166,8 @@ module.exports = function(wagner) {
                                 .json({error: error.toString()});
                         }
 
-                        res.json({message: 'Job has been successfully registered'});
+                        let content = { message: 'Job has been successfully registered' };
+                        res.json(content);
                     });
                 })
             })

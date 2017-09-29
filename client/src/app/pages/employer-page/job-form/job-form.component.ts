@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { RegisterJobService } from '../../../services/organizacion/register-job.service';
+import { Data } from './data';
+import { ResponseMessage } from '../../../shared/ResponseMessage';
+
 
 @Component({
   selector: 'app-job-form',
@@ -13,6 +17,8 @@ export class JobFormComponent implements OnInit {
   dateModel;
 
   jobForm: FormGroup;
+  jobData: Data;
+  errmess: ResponseMessage;
 
   candidateMessage = 'Candidate Type';
   candidateType = ['Student', 'graduated'];
@@ -30,7 +36,8 @@ export class JobFormComponent implements OnInit {
   urgency = true;
 
   constructor(public activeModal: NgbActiveModal,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private registerJobService: RegisterJobService) {
     this.createForm();
   }
 
@@ -77,7 +84,18 @@ export class JobFormComponent implements OnInit {
       this.urgencyMessage = 'High'
     }
 
-    this.urgency = !this.urgency
+    this.urgency = !this.urgency;
+    this.jobForm.patchValue({
+      urgent: this.urgency
+    });
+  }
+
+  onSetDate() {
+    const date = this.dateModel.day + '/' + this.dateModel.month + '/' + this.dateModel.year;
+
+    this.jobForm.patchValue({
+      expiryDate: date
+    });
   }
 
   createForm() {
@@ -103,20 +121,28 @@ export class JobFormComponent implements OnInit {
 
     if (!this.jobForm) { return }
 
-    // todo: validate input fields and set error messages
+    // todo: validate text-input fields and set error messages
   }
 
   onSubmit() {
 
-    const date = this.dateModel.day + '/' + this.dateModel.month + '/' + this.dateModel.year;
-
-    this.jobForm.patchValue({
-      expiryDate: date
-    });
-
     // todo: validate missing fields (unselected drop-downs) and set error messages
 
-    // todo: create a service
+    this.jobData = new Data(this.jobForm.value);
+    console.log(this.jobData);
+
+    this.errmess = null;
+
+    this.registerJobService.submitJob(this.jobData).subscribe(
+      message => {
+        console.log(message);
+        this.activeModal.close();
+      },
+      errmess => {
+        this.errmess = errmess;
+      }
+    )
+
   }
 
 }

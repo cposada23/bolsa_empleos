@@ -4,6 +4,7 @@ let Schema = mongoose.Schema;
 let jobSchema = {
 
     // todo: make an indexation to the id of this schema
+    // todo: create an "owner" field
     jobName: {
         type: String,
         required: true,
@@ -42,6 +43,7 @@ let jobSchema = {
         type: Boolean,
         required: true
     },
+    // todo: create a quantity variable
     candidates: [{
         type: Schema.Types.ObjectId,
         ref: 'User'

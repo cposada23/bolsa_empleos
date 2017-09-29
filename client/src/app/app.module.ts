@@ -2,7 +2,7 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Restangular, RestangularModule} from 'ngx-restangular';
+import { RestangularModule} from 'ngx-restangular';
 import { AppRoutingModule} from './app-routing/app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -23,6 +23,7 @@ import { DashboardTableComponent } from './pages/employer-page/dashboard-table/d
 import { EmpresaService } from './services/organizacion/empresa.service';
 import { RegisterService } from './services/organizacion/register.service';
 import { LoginService } from './services/organizacion/login.service';
+import { RegisterJobService } from './services/organizacion/register-job.service';
 
 // values
 
@@ -61,6 +62,7 @@ import { CompanyAuthGuard } from './app-routing/guards/companyAuthGuard';
     EmpresaService,
     RegisterService,
     LoginService,
+    RegisterJobService,
     CompanyAuthGuard,
     { provide: 'BaseURL', useValue: baseURL }
   ],

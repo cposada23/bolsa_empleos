@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   registerData: data;
   message: ResponseMessage;
-  errmess: string;
+  errmess: ResponseMessage;
 
   constructor(private formBuilder: FormBuilder,
               private registerService: RegisterService) {
@@ -39,6 +39,7 @@ export class RegisterComponent implements OnInit {
 
     this.message = null;
     this.errmess = null;
+    this.registerForm.reset();
 
     // todo: test the response message parsing
     this.registerService.submitUser(this.registerData)
