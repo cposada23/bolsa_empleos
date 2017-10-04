@@ -8,8 +8,6 @@ module.exports = {
 
         let token = req.body.user.token;
 
-        // todo: verify the current role as an organizational user
-
         if(token) {
             jwt.verify(token, config.secret, (error, decoded) => {
                 if(error) {

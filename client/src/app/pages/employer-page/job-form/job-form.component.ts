@@ -1,10 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { RegisterJobService } from '../../../services/organizacion/register-job.service';
+
+// clases
+
 import { Data } from './data';
+import { Job } from '../../../models/organizacion/job';
 import { ResponseMessage } from '../../../shared/ResponseMessage';
 
+// servicios
+
+import { RegisterJobService } from '../../../services/organizacion/register-job.service';
+import { JobListService } from '../../../services/organizacion/job-list.service';
 
 @Component({
   selector: 'app-job-form',
@@ -37,7 +44,8 @@ export class JobFormComponent implements OnInit {
 
   constructor(public activeModal: NgbActiveModal,
               private formBuilder: FormBuilder,
-              private registerJobService: RegisterJobService) {
+              private registerJobService: RegisterJobService,
+              private jobListService: JobListService) {
     this.createForm();
   }
 
@@ -136,6 +144,10 @@ export class JobFormComponent implements OnInit {
     this.registerJobService.submitJob(this.jobData).subscribe(
       message => {
         console.log(message);
+
+        const jobItem = new Job(this.jobData.content.jobName, this.jobData.content.expiryDate);
+        this.jobListService.triggerEvent(jobItem);
+
         this.activeModal.close();
       },
       errmess => {

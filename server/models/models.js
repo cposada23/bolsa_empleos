@@ -6,12 +6,10 @@ module.exports = function(wagner) {
 
     mongoose.connect(config.database);
 
-    let Empresa = mongoose.model('Empresa', require('./organizacion/empresa'), 'empresas' );
     let User = mongoose.model('User', require('./organizacion/user'), 'users');
     let Job = mongoose.model('Job', require('./organizacion/job'), 'jobs');
 
     let models = {
-        Empresa: Empresa,
         User: User,
         Job: Job
     };

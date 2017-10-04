@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import { Empresa } from '../../models/organizacion/empresa';
-import { EmpresaService} from '../../services/organizacion/empresa.service';
+import { Company } from '../../models/organizacion/company';
+import { CompanyService } from '../../services/organizacion/company.service';
 
 @Component({
   selector: 'app-home',
@@ -9,17 +9,17 @@ import { EmpresaService} from '../../services/organizacion/empresa.service';
 })
 export class HomeComponent implements OnInit {
 
-  empresas: Empresa[];
+  companies: Company[];
   errMess: String;
 
-  constructor(private empresaService: EmpresaService,
+  constructor(private companyService: CompanyService,
               @Inject('BaseURL') private BaseURL) { }
 
   ngOnInit() {
-    this.empresaService.getEmpresas()
+    this.companyService.getEmpresas()
       .subscribe(
-        empresas => {
-          this.empresas = empresas;
+        companies => {
+          this.companies = companies;
         },
         errmess => {
           this.errMess = <any>errmess;

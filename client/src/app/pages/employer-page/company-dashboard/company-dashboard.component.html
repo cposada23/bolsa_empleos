@@ -5,8 +5,6 @@
 
     <div class="col-sm-3 sidebar">
 
-      <!-- todo: set this as an unordered list -->
-
       <div class="card">
         <div class="card-body">
 
@@ -26,21 +24,15 @@
 
     <div class="col-sm-9">
 
-      <!-- todo: set this as an auxiliary route -->
-
       <nav class="navbar navbar-light navbar-expand-md nav-header">
-
-        <!-- todo: change this container to a nav tab -->
 
         <div class="navbar-nav mr-auto"></div>
         <div class="navbar-nav">
           <a><i class="fa fa-bell-o"></i></a>
         </div>
 
-        <!-- todo: increase the size of the user icon -->
-
         <div class="navbar-nav">
-          <a id="accountPopover" [ngbPopover]="popContent" popoverTitle="username" placement="bottom">
+          <a id="accountPopover" [ngbPopover]="popContent"  #p="ngbPopover" placement="bottom-right">
             <i class="fa fa-user-circle-o icon fa-lg"></i>
           </a>
         </div>
@@ -48,6 +40,9 @@
       </nav>
 
       <ul class="nav">
+
+        <!-- todo: set this as an auxiliary route -->
+
         <li class="nav-item">
           <a class="nav-link active small" href="#">Active</a>
         </li>
@@ -63,9 +58,20 @@
   </div>
 </div>
 
+<!-- todo: close on click outside this box -->
+
 <ng-template #popContent>
-  <ul class="list-group">
-    Settings
-  </ul>
+  <div class="header">
+    <span class="header">{{username}}</span>
+  </div>
+  <span class="top-margin text-muted body">
+      Settings
+    </span>
+  <div class="divider"></div>
+  <div class="body">
+    <span class="text-muted" (click)="onLogOut()">
+      Log out
+    </span>
+  </div>
 </ng-template>
 

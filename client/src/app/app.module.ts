@@ -20,10 +20,11 @@ import { DashboardTableComponent } from './pages/employer-page/dashboard-table/d
 
 // servicios
 
-import { EmpresaService } from './services/organizacion/empresa.service';
+import { CompanyService } from './services/organizacion/company.service';
 import { RegisterService } from './services/organizacion/register.service';
 import { LoginService } from './services/organizacion/login.service';
 import { RegisterJobService } from './services/organizacion/register-job.service';
+import { JobListService } from './services/organizacion/job-list.service';
 
 // values
 
@@ -44,7 +45,7 @@ import { CompanyAuthGuard } from './app-routing/guards/companyAuthGuard';
     LoginComponent,
     CompanyDashboardComponent,
     JobFormComponent,
-    DashboardTableComponent,
+    DashboardTableComponent
   ],
   imports: [
     BrowserModule,
@@ -59,11 +60,12 @@ import { CompanyAuthGuard } from './app-routing/guards/companyAuthGuard';
     JobFormComponent
   ],
   providers: [
-    EmpresaService,
+    CompanyService,
     RegisterService,
     LoginService,
     RegisterJobService,
     CompanyAuthGuard,
+    JobListService,
     { provide: 'BaseURL', useValue: baseURL }
   ],
   bootstrap: [AppComponent]

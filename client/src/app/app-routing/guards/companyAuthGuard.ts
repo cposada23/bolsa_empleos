@@ -18,7 +18,6 @@ export class CompanyAuthGuard implements CanActivate {
       }
     }
 
-    // todo: redirect user to the login page
     this.router.navigate(['']);
 
     return false

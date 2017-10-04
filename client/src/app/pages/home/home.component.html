@@ -17,9 +17,9 @@
       <p> A list listing all the organizations !</p>
 
       <ul class="list-group">
-        <li class="list-group-item" *ngFor="let empresa of empresas">
-          <h4 class="display-4">{{empresa.name}}</h4>
-          <small>id_ {{empresa._id}}</small>
+        <li class="list-group-item" *ngFor="let company of companies">
+          <h4 class="display-4">{{company.companyName}}</h4>
+          <small>id_ {{company._id}}</small>
         </li>
       </ul>
     </div>
@@ -29,7 +29,7 @@
     </div>
 
     <div class="col-xs-12">
-      <div [hidden]="empresas || errMess">
+      <div [hidden]="companies || errMess">
         <h4>Stand by</h4>
       </div>
     </div>

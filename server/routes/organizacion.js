@@ -8,19 +8,17 @@ module.exports = function(wagner) {
 
     // liste todas las empresas registradas: http://localhost:3000/organizacion/listar
     // Request headers:  name: Content-Type  value: application/json
-    api.get('/listar', wagner.invoke(function (Empresa) {
+    api.get('/listar', wagner.invoke(function (User) {
 
         return function (req, res) {
 
-            Empresa.find({}).exec(function (error, empresas) {
+            User.find({}, '_id companyName').exec(function (error, User) {
                 if (error) {
                     return res.status(status.INTERNAL_SERVER_ERROR).json({error: error.toString()});
                 }
+                // todo: set a response for no results
 
-                // todo: null response
-
-                //res.json({ empresas: empresas});
-                res.json(empresas);
+                res.json(User);
             })
         };
     }));
@@ -96,7 +94,6 @@ module.exports = function(wagner) {
 
                 User.findOne({companyName: reqAccess.companyName}, function (err, user) {
 
-                    // todo: unset the success field.
                     if(err){
                         return res
                             .status(status.INTERNAL_SERVER_ERROR)
@@ -142,8 +139,17 @@ module.exports = function(wagner) {
             // todo: field validation (by asserts or using the built-in mongoose validators)
 
             let reqJob = req.body.content;
+            let role = req.decoded.role;
+            let companyName = req.decoded.name;
 
             process.nextTick(function () {
+
+                if(role !== 'company') {
+                    let content = { message: 'You don\'t have permission for this type of request'};
+                    return res
+                        .status(status.FORBIDDEN)
+                        .json(content);
+                }
 
                 Job.findOne({jobName: reqJob.jobName}, function (err, job) {
 
@@ -159,6 +165,8 @@ module.exports = function(wagner) {
                             .json({error: err.toString()});
                     }
 
+                    reqJob.ownerCompany = companyName;
+
                     Job(reqJob).save(function (error) {
                         if(error){
                             return res
@@ -171,6 +179,23 @@ module.exports = function(wagner) {
                     });
                 })
             })
+        }
+    }));
+
+    // liste las ofertas por empresa:  http://localhost:3000/organizacion/listarOfertas?id=pragma
+    // Request headers:  name: Content-Type  value: application/json
+    api.get('/listarOfertas', wagner.invoke(function (Job) {
+
+        return function (req, res) {
+
+            let id = req.query.id;
+            console.log(id);
+            res.json();
+
+            process.nextTick(function () {
+
+                // todo: return offers by id, name, date and quantity
+            });
         }
     }));
 
