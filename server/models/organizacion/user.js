@@ -31,6 +31,10 @@ schema.methods.validPassword = function (password) {
     return this.hash === hash;
 };
 
+schema.virtual('password').set(function (password) {
+    this.setPassword(password);
+})
+
 schema.methods.generateJwt = function () {
     let expiry = new Date();
     expiry.setDate(expiry.getDate() + 7);

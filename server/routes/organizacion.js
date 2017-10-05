@@ -53,13 +53,8 @@ module.exports = function(wagner) {
                         return res.status(status.CONFLICT).json({error: 'El usuario ya existe'});
                     }
 
-                    let newCompany = new User();
 
-                    newCompany.companyName = reqUser.companyName;
-                    newCompany.role = reqUser.role;
-                    newCompany.setPassword(reqUser.password);
-
-                    newCompany.save( function (error) {
+                    User.create(reqUser, function (error) {
 
                         if(error){
                             return res
