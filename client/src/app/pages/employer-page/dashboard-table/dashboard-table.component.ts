@@ -1,6 +1,10 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { JobFormComponent } from '../job-form/job-form.component';
+
+// clases
+
+import { Job } from '../../../models/organizacion/job';
 
 // servicios
 
@@ -14,14 +18,16 @@ import { JobListService } from '../../../services/organizacion/job-list.service'
 })
 export class DashboardTableComponent implements OnInit {
 
-  // todo: set a new class to store an array of jobs
+  jobs: Job[];
 
   constructor(private modalService: NgbModal,
               private jobListService: JobListService) {
 
-    // todo: invoke a service to return all available jobs
-    // todo: listen for new list-job changes
-    this.jobListService.jobEvent.subscribe((job) => console.log('success'));
+    const user = localStorage.getItem('currentUser');
+    const token = JSON.parse(user).token;
+
+    this.jobListService.getJobs(token).subscribe((jobs) => this.jobs = jobs);
+    this.jobListService.jobEvent.subscribe((job) => this.jobs.unshift(job));
   }
 
   ngOnInit() {
@@ -30,5 +36,4 @@ export class DashboardTableComponent implements OnInit {
   open() {
     const modalRef = this.modalService.open(JobFormComponent, {windowClass: 'modal-style', keyboard: false});
   }
-
 }

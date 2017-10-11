@@ -8,7 +8,7 @@ module.exports = function(wagner) {
 
     // liste todas las empresas registradas: http://localhost:3000/organizacion/listar
     // Request headers:  name: Content-Type  value: application/json
-    api.get('/listar', wagner.invoke(function (User) {
+    api.get('/listarEmpresas', wagner.invoke(function (User) {
 
         return function (req, res) {
 
@@ -132,7 +132,7 @@ module.exports = function(wagner) {
 
     // Registre la oferta: http://localhost:3000/organizacion/nuevo
     // Request headers:  name: Content-Type  value: application/json
-    api.post('/nuevo', auth.verifyToken, wagner.invoke(function (Job) {
+    api.post('/nuevaOferta', auth.verifyToken, wagner.invoke(function (Job) {
 
         return function (req, res) {
 
@@ -142,6 +142,7 @@ module.exports = function(wagner) {
             let role = req.decoded.role;
             let companyName = req.decoded.name;
 
+            // todo: delete process.next tick
             process.nextTick(function () {
 
                 if(role !== 'company') {
@@ -182,19 +183,35 @@ module.exports = function(wagner) {
         }
     }));
 
-    // liste las ofertas por empresa:  http://localhost:3000/organizacion/listarOfertas?id=pragma
-    // Request headers:  name: Content-Type  value: application/json
-    api.get('/listarOfertas', wagner.invoke(function (Job) {
+    // liste las ofertas por empresa:  http://localhost:3000/organizacion/listarOfertas
+    // Request headers:  name: x-access-token  value: xxx.xxx.xxx
+    api.get('/listarOfertas', auth.verifyToken, wagner.invoke(function (Job) {
 
         return function (req, res) {
 
-            let id = req.query.id;
-            console.log(id);
-            res.json();
+            let role = req.decoded.role;
+            let companyName = req.decoded.name;
 
-            process.nextTick(function () {
+            if (role !== 'company') {
+                let content = { message: 'You don\'t have permission for this type of request'};
+                return res
+                    .status(status.FORBIDDEN)
+                    .json(content);
+            }
 
-                // todo: return offers by id, name, date and quantity
+            // todo: return the quantity
+
+            Job.find({ownerCompany: companyName}, '_id jobName expiryDate', function (err, job) {
+
+                if (err) {
+                    let content = { message: err.toString() };
+                    return res
+                        .status(status.INTERNAL_SERVER_ERROR)
+                        .json(content);
+                }
+
+                // todo: set a response for no results
+                res.json(job);
             });
         }
     }));

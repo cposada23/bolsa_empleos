@@ -16,6 +16,6 @@ module.exports = function (app) {
     app.use(logger('dev'));
     app.use(bodyParser.json());
     app.use(expressValidator());
-    app.use(bodyParser.urlencoded({extended : true}));
+    app.use(bodyParser.urlencoded({extended : false}));
     app.use(errorHandler());
 };

@@ -6,7 +6,15 @@ module.exports = {
 
     verifyToken: ((req, res, next) => {
 
-        let token = req.body.user.token;
+        let token;
+        //let token = req.body.user.token || req.query.token ;
+        if(req.body.user) {
+           token = req.body.user.token;
+        } else {
+           token = req.headers['x-access-token'] ;
+        }
+
+        console.log("token value: ",token);
 
         if(token) {
             jwt.verify(token, config.secret, (error, decoded) => {
@@ -21,7 +29,7 @@ module.exports = {
         } else {
             return res
                 .status(status.UNAUTHORIZED)
-                .json({error: error.toString()})
+                .json({error: 'You are not authorized for this type of request'})
         }
     })
 };

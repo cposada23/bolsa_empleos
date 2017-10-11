@@ -20,7 +20,7 @@ import { JobListService } from '../../../services/organizacion/job-list.service'
 })
 export class JobFormComponent implements OnInit {
 
-  // todo: convert this variable to a date object
+  // todo: convert the date variable to a date object
   dateModel;
 
   jobForm: FormGroup;
@@ -143,7 +143,8 @@ export class JobFormComponent implements OnInit {
 
     this.registerJobService.submitJob(this.jobData).subscribe(
       message => {
-        console.log(message);
+
+        // todo: set a success message
 
         const jobItem = new Job(this.jobData.content.jobName, this.jobData.content.expiryDate);
         this.jobListService.triggerEvent(jobItem);
@@ -153,8 +154,6 @@ export class JobFormComponent implements OnInit {
       errmess => {
         this.errmess = errmess;
       }
-    )
-
+    );
   }
-
 }
