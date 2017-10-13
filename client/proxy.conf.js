@@ -5,7 +5,7 @@ const PROXY_CONFIG = [
       "/organizacion/listar",
       "/organizacion/registrar",
       "/organizacion/login",
-      "/organizacion/nuevo",
+      "/organizacion/nuevaOferta",
       "/organizacion/listarOfertas"
     ],
     "target": "http://localhost:3000",

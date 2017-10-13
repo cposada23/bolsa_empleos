@@ -7,14 +7,12 @@ module.exports = {
     verifyToken: ((req, res, next) => {
 
         let token;
-        //let token = req.body.user.token || req.query.token ;
+
         if(req.body.user) {
            token = req.body.user.token;
         } else {
            token = req.headers['x-access-token'] ;
         }
-
-        console.log("token value: ",token);
 
         if(token) {
             jwt.verify(token, config.secret, (error, decoded) => {
