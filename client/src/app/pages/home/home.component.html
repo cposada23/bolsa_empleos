@@ -1,32 +1,32 @@
-<app-header></app-header>
-
-<div class="container-fluid">
-  <div class="jumbotron">
-    <div style="text-align:center">
-      <h1 class="display-3">Bolsa de Empleos</h1>
-      <p class="lead">Para el departamento de Ingenieria de Sistemas de la Universidad de Antioquia</p>
+<div class="container-fluid bg-no-overlay">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <span class="header">Always exceed your goals</span>
+        <span>Find The Job That Fits Your Life</span>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="container">
 
-  <div class="row">
+  <div class="row card-list" *ngFor="let company of companies">
+    <div class="col-sm-9">
+      <div class="card">
 
-    <div class="col-xs-12 col-sm-8">
-      <p> A list listing all the organizations !</p>
+        <div class="row">
+          <div class="col-sm-3 media">
 
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let company of companies">
-          <h4 class="display-4">{{company.companyName}}</h4>
-          <small>id_ {{company._id}}</small>
-        </li>
-      </ul>
+          </div>
+          <div class="col content">
+            <span class="title">{{company.companyName}}</span>
+          </div>
+        </div>
+
+      </div>
     </div>
-
-    <div class="col-xs-12 col-sm-4">
-      <p> Some kind of banner on the right side !</p>
-    </div>
+  </div>
 
     <div class="col-xs-12">
       <div [hidden]="companies || errMess">
