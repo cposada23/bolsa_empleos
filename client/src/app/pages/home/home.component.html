@@ -1,39 +1,43 @@
 <div class="container-fluid bg-no-overlay">
-  <div class="row">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <span class="header">Always exceed your goals</span>
+        <span>Find The Job That Fits Your Life</span>
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="container">
 
-  <div class="row">
+  <div class="row card-list" *ngFor="let empresa of empresas">
+    <div class="col-sm-9">
+      <div class="card">
 
-    <div class="col-xs-12 col-sm-8">
-      <p> A list listing all the organizations !</p>
+        <div class="row">
+          <div class="col-sm-3 media">
 
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let empresa of empresas">
-          <h4 class="display-4">{{empresa.name}}</h4>
-          <small>id_ {{empresa._id}}</small>
-        </li>
-      </ul>
-    </div>
+          </div>
+          <div class="col content">
+            <span class="title">{{empresa.name}}</span>
+          </div>
+        </div>
 
-    <div class="col-xs-12 col-sm-4">
-      <p> Some kind of banner on the right side !</p>
-    </div>
-
-    <div class="col-xs-12">
-      <div [hidden]="empresas || errMess">
-        <h4>Stand by</h4>
       </div>
     </div>
+  </div>
 
-    <div class="col-xs-12">
-      <div *ngIf="errMess">
-        {{errMess}}
-      </div>
+  <div class="col-xs-12">
+    <div [hidden]="empresas || errMess">
+      <h4>Stand by</h4>
     </div>
+  </div>
 
+  <div class="col-xs-12">
+    <div *ngIf="errMess">
+      {{errMess}}
+    </div>
   </div>
 
 </div>
