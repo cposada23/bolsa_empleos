@@ -1,3 +1,42 @@
 .spacing {
   margin-top: 0.3em;
 }
+
+.main-margin-title {
+  padding-bottom: 1em;
+}
+
+.large-margin-title{
+  padding-bottom: 2em;
+}
+
+.margin-title {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.user-name {
+  padding-top: 2em;
+}
+
+.form-group-padding-top {
+  padding-top: 1em;
+}
+
+.submit-button {
+  margin-top: 1em;
+}
+
+.error {
+  color: #e53935;
+  margin-left: 0.5em;
+  font-weight: bold;
+}
+
+.invalid-form-control {
+  border-color: #e53935;
+}
+
+.role-box {
+  padding-left: 1em;
+}

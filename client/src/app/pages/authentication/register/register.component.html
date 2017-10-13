@@ -5,26 +5,180 @@
   <div class="card spacing">
     <div class="card-body">
 
-      <h2 class="card-title">Register</h2>
+      <h2 class="card-title">Create a new account</h2>
       <hr class="my-4">
 
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"  >
+      <form novalidate [formGroup]="registerForm" (ngSubmit)="onSubmit()"  >
 
-        <div class="row">
+        <div class="row no-gutters">
           <div class="col-sm-6 ">
+
+            <h4 class="main-margin-title mx-3">Account details</h4>
+
+            <!-- todo:  change name for email -->
+
             <div class="form-group">
-              <label for="name">Name of the Company</label>
-              <input formControlName="companyName"  class="form-control" id="name">
+              <label for="name" class="float-left" >Name of the Company</label>
+              <input formControlName="companyName"  class="form-control"
+                     [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('companyName'), 'companyName')}"
+                     id="name">
+
+              <span [hidden]="!formErrors.companyName" class="float-right">
+                <small class="error">{{formErrors.companyName}}</small>
+              </span>
             </div>
 
             <div class="form-group">
               <label for="password">Password</label>
-              <input formControlName="password" class="form-control" id="password" type="password">
+              <input formControlName="password" class="form-control"
+                     [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('password'), 'password')}"
+                     id="password" type="password">
+
+              <span [hidden]="!formErrors.password" class="float-right">
+                <small class="error">{{formErrors.password}}</small>
+              </span>
             </div>
 
-            <button type="submit" class="btn btn-primary">Register</button>
+            <!-- todo: fill out all the input types with a form control field -->
+
+            <h4 class="margin-title mx-3">Your company details</h4>
+
+            <div class="form-group">
+              <label for="description">Tell us a little bit about your company</label>
+              <textarea formControlName="companyDetails" class="form-control"
+                        [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('companyDetails'), 'companyDetails')}"
+                        id="description"></textarea>
+
+              <span [hidden]="!formErrors.companyDetails" class="float-right">
+                <small class="error">{{formErrors.companyDetails}}</small>
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label for="webpage">Your company's web page</label>
+              <input formControlName="website" class="form-control form-control-sm"
+                     [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('website'), 'website')}"
+                     id="webpage">
+
+              <span [hidden]="!formErrors.website" class="float-right">
+                <small class="error">{{formErrors.website}}</small>
+              </span>
+            </div>
+
+          </div>
+
+          <div class="col-sm-5 ml-sm-auto">
+
+            <h4 class="main-margin-title mx-3">Personal information</h4>
+
+            <div class="form-group">
+              <div class="form-row user-name">
+                <div class="col">
+                  <input formControlName="name" class="form-control" placeholder="First name"
+                         [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('name'), 'name')}">
+                </div>
+
+                <div class="col">
+                  <input formControlName="lastName" class="form-control" placeholder="Last name"
+                         [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('lastName'), 'lastName')}">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col">
+                  <span [hidden]="!formErrors.name" class="float-right">
+                    <small class="error">{{formErrors.name}}</small>
+                  </span>
+                </div>
+                <div class="col">
+                  <span [hidden]="!formErrors.lastName" class="float-right">
+                    <small class="error">{{formErrors.lastName}}</small>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cellphone">Contact Information</label>
+              <input  formControlName="contact" class="form-control form-control-sm" id="cellphone" placeholder="+24 3003102703" type="tel"
+                      [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('contact'), 'contact')}">
+
+              <span [hidden]="!formErrors.contact" class="float-right">
+                <small class="error">{{formErrors.contact}}</small>
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label>What's your current role ?</label>
+
+              <!-- todo: iterate over an array defined in the typescript file -->
+
+              <div ngbDropdown class="d-inline-block role-box">
+                <button class="btn" ngbDropdownToggle type="button">{{selectedRole}}</button>
+                <div ngbDropdownMenu>
+                  <button class="dropdown-item" type="button" (click)="updateCurrentRole('Director')">Director</button>
+                  <button class="dropdown-item" type="button" (click)="updateCurrentRole('Manager')">Manager</button>
+                  <button class="dropdown-item" type="button" (click)="updateCurrentRole('Analyst')">Analyst</button>
+                  <button class="dropdown-item" type="button" (click)="updateCurrentRole('Human Resources Analyst')">Human Resources Analyst</button>
+                  <button class="dropdown-item" type="button" (click)="updateCurrentRole('psychologist')">psychologist</button>
+                  <button class="dropdown-item" type="button" (click)="updateCurrentRole('Other')">Other</button>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
+
+        <hr class="my-4">
+        <h4 class="large-margin-title mx-3">Additional information</h4>
+
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-8">
+
+            <div class=" form-group row">
+              <label for="nit" class="col-sm-3 col-form-label">NIT</label>
+              <div class="col-sm-3">
+                <input formControlName="nit" class="form-control" id="nit"
+                       [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('nit'), 'nit')}">
+              </div>
+
+              <span [hidden]="!formErrors.nit" class="float-right">
+                <small class="error">{{formErrors.nit}}</small>
+              </span>
+            </div>
+
+            <div class=" form-group row">
+              <label class="col-sm-3 col-form-label">City</label>
+              <div class="col-sm-6">
+
+                <!-- todo: include a validation message and change its style to match the look and feel of this form -->
+
+                <ng4geo-autocomplete [userSettings]="userSettings" (componentCallback)="autoCompleteCallback($event)"></ng4geo-autocomplete>
+              </div>
+
+              <!-- todo: set an error message in case this field has been touched -->
+            </div>
+
+            <div class=" form-group row">
+              <label for="technology" class="col-sm-3 col-form-label">Employment sector</label>
+              <div class="col-sm-6">
+                <input formControlName="employmentSector" class="form-control" id="technology" placeholder="i.e. Software development"
+                       [ngClass]="{'invalid-form-control': validateEmptyFields(registerForm.get('employmentSector'), 'employmentSector')}">
+              </div>
+
+              <span [hidden]="!formErrors.employmentSector" class="float-right">
+                <small class="error">{{formErrors.employmentSector}}</small>
+              </span>
+            </div>
+
+          </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary float-right submit-button btn-success"
+        [disabled]="registerForm.invalid">Sign Up</button>
+
       </form>
     </div>
   </div>
@@ -39,3 +193,7 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript"
+        src="https://maps.google.com/maps/api/js?sensor=true&key=AIzaSyBQQYSUeGX2Uu4fv0KE2tlI3nBOON9lSTA&libraries=places&language=en-US"></script>
+

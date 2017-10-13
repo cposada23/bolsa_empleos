@@ -47,7 +47,7 @@ module.exports = function(wagner) {
                     if(err){
                         return res
                             .status(status.INTERNAL_SERVER_ERROR)
-                            .json({error: err.toString()});
+                            .json({error: error.toString()});
                     }
 
                     if(user){
@@ -57,7 +57,7 @@ module.exports = function(wagner) {
                             .json({error: 'The username already exist'});
                     }
 
-                    User(reqUser).save( function (error) {
+                    User.create(reqUser, function (error) {
 
                         if(error){
                             return res

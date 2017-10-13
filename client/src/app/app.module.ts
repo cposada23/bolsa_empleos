@@ -17,6 +17,7 @@ import { RegisterComponent } from './pages/authentication/register/register.comp
 import { LoginComponent } from './pages/authentication/login/login.component';
 import { JobFormComponent } from './pages/employer-page/job-form/job-form.component';
 import { DashboardTableComponent } from './pages/employer-page/dashboard-table/dashboard-table.component';
+import { Ng4GeoautocompleteModule } from 'ng4-geoautocomplete';
 
 // servicios
 
@@ -33,7 +34,8 @@ import { baseURL } from './shared/baseurl';
 // config files
 
 import { RestangularConfigFactory } from './shared/restConfig';
-import { CompanyAuthGuard } from './app-routing/guards/companyAuthGuard';
+import { CompanyAuthGuard } from './app-routing/guards/companyAuthGuard'
+;
 
 
 @NgModule({
@@ -53,7 +55,8 @@ import { CompanyAuthGuard } from './app-routing/guards/companyAuthGuard';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    Ng4GeoautocompleteModule.forRoot()
   ],
   entryComponents: [
     LoginComponent,
