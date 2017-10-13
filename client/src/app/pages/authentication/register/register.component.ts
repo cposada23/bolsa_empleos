@@ -114,7 +114,6 @@ export class RegisterComponent implements OnInit {
 
     this.message = null;
     this.errmess = null;
-    this.registerForm.reset();
 
     // todo: test the response message parsing
 
@@ -169,5 +168,8 @@ export class RegisterComponent implements OnInit {
 
   updateCurrentRole(role: string) {
     this.selectedRole = role;
+    this.registerForm.patchValue({
+      workingRole: role
+    });
   }
 }
