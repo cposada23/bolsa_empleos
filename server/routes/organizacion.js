@@ -152,7 +152,7 @@ module.exports = function(wagner) {
                         .json(content);
                 }
 
-                Job.findOne({jobName: reqJob.jobName}, function (err, job) {
+                Job.findOne({ownerCompany: companyName, jobName: reqJob.jobName}, function (err, job) {
 
                     if(err){
                         return res
@@ -163,7 +163,7 @@ module.exports = function(wagner) {
                     if(job){
                         return res
                             .status(status.CONFLICT)
-                            .json({error: err.toString()});
+                            .json({error: 'This offer has already been registered'});
                     }
 
                     reqJob.ownerCompany = companyName;

@@ -34,8 +34,7 @@ import { baseURL } from './shared/baseurl';
 // config files
 
 import { RestangularConfigFactory } from './shared/restConfig';
-import { CompanyAuthGuard } from './app-routing/guards/companyAuthGuard'
-;
+import { CompanyAuthGuard } from './app-routing/guards/companyAuthGuard';
 
 
 @NgModule({

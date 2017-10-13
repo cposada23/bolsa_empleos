@@ -7,7 +7,6 @@ let jobSchema = {
     jobName: {
         type: String,
         required: true,
-        unique: true
     },
     ownerCompany: {
         type: String,
