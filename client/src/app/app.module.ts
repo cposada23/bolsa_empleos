@@ -18,6 +18,7 @@ import { LoginComponent } from './pages/authentication/login/login.component';
 import { JobFormComponent } from './pages/employer-page/job-form/job-form.component';
 import { DashboardTableComponent } from './pages/employer-page/dashboard-table/dashboard-table.component';
 import { Ng4GeoautocompleteModule } from 'ng4-geoautocomplete';
+ import { RegisterUserComponent } from './pages/candidate-page/register-user/register-user.component';
 
 // servicios
 
@@ -46,7 +47,8 @@ import { CompanyAuthGuard } from './app-routing/guards/companyAuthGuard';
     LoginComponent,
     CompanyDashboardComponent,
     JobFormComponent,
-    DashboardTableComponent
+    DashboardTableComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,

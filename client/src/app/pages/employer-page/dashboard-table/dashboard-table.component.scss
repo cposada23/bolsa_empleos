@@ -8,3 +8,29 @@
 .modal-style .modal-footer {
   background: #f5f5f5;
 }
+
+// dashboard card styles
+
+.card {
+  background: #fff;
+  border-radius: 2px;
+  margin: 1rem;
+
+  .toolbar {
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+  }
+
+  .inline-icon {
+    padding-top: 0.2em;
+    padding-right: 0.3em;
+  }
+
+  .offers-table {
+    margin-top: 1em;
+  }
+}
+
+.dashboard {
+  box-shadow: 0 1px 10px rgba(0,0,0,0.19);
+}
